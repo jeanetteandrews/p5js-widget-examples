@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>a cool website</title>
+  </head>
+  <body>
+    <script src="//toolness.github.io/p5.js-widget/p5-widget.js"></script>
+    
+    <script type="text/p5" data-autoplay data-height="500" data-preview-width="1000" data-p5-version="1.11.1">
+        let font;
+
+        function preload() {
+            font = loadFont('Favorit-Regular.otf'); 
+        }
+
+        function setup() {
+            createCanvas(100, 100);
+            textFont(font);
+            textSize(36);
+            
+            // Display the bounding box.
+            let bbox = font.textBounds('p5*js', 10, 50);
+            rect(bbox.x, bbox.y, bbox.w, bbox.h);
+
+            // Get the point array.
+            let points = font.textToPoints('p5*js', 10, 50);
+
+            // Draw a dot at each point.
+            for (let p of points) {
+                point(p.x, p.y);
+        }
+        
+        fill('deeppink'); // Text color
+        text('p5*js', 10, 50);
+        }
+    </script>
+  </body>
+</html>
